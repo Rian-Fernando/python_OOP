@@ -28,7 +28,7 @@ class Car:
     def SetCarMilage(self, NewCarMilage):
         self.__carMilage = NewCarMilage
     
-    def SetCurrentSpeed(self, NewCurrentSpeed)
+    def SetCurrentSpeed(self, NewCurrentSpeed):
         self.__currentSpeed = NewCurrentSpeed
     
     def SetFuelLevel(self, NewFuelLevel):
@@ -56,6 +56,6 @@ class Car:
     
     def PumpFuel(self ,NewFuelLevel):
         if self.__fuel <= 0.5:
-            SetFuelLevel(NewFuelLevel)
+            NewFuelLevel(NewFuelLevel)
         else:
             print("Have Enough Fuel to travel")
