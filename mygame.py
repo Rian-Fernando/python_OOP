@@ -1,34 +1,32 @@
-import pygame, sys
-# Sys: Access to system functionality
+import pygame, sys, random
+from pygame.math import Vector2
 
-pygame.init() # Starts Pygame Modules(sounds, graphics, etc)
+class FRUIT:
+    def __init__(self):
+        self.x = random.randint(0, cell_number - 1)
+        self.y = random.randint(0, cell_number - 1)
+        self.pos = Vector2(self.x, self.y)
 
-screen = pygame.display.set_mode((400, 500)) #Width, Height of Window
-# When run, window shown for breif time
+    def draw_fruit(self):
+        fruit_rect = pygame.Rect(int(self.pos.x * cell_size), int(self.pos.y * cell_size), cell_size, cell_size)
+        pygame.draw.rect(screen, (126, 166, 114), fruit_rect)
+        
 
-clock = pygame.time.Clock() # Helps influence time (control fps)
+pygame.init()
+cell_size = 40
+cell_number = 20
+screen = pygame.display.set_mode((cell_size * cell_number, cell_size * cell_number))
+clock = pygame.time.Clock()
 
-test_surface = pygame.Surface((100, 200))   # Create Surface
-test_surface.fill(pygame.Color("Blue")) # Set Color to Surface
-test_rect1 = pygame.Rect(100, 200, 100, 100) # Create Rectangle
-test_rect2 = test_surface.get_rect(center=(200, 250)) # Create Rect around Surface
-# When run, surface is center, center position 200, 250
+fruit = FRUIT()
 
-while True: # Main game loop to keep windown open and run each frame
-    
-    for event in pygame.event.get(): # Event loop tracking all actions
-        if event.type == pygame.QUIT:    # Checks if X on window clicked 
-            pygame.quit()   # Closes all Modules (opposite of pygame.init())
-            sys.exit()  # Successfully exits code
-    
-    screen.fill((175, 215, 70)) # Set Colour to Display
-    pygame.draw.rect(screen, pygame.Color("red"), test_rect1) # Update Rectangle on Display
-    pygame.draw.ellipse(screen, pygame.Color("green"), test_rect1) # Different shape : Elipse
-    test_rect2.right += 1   # Moves Rect one pixel right each interation
-    screen.blit(test_surface, test_rect2)   # Update Surface on Display
-    pygame.display.update() # Displays all elements
-    clock.tick(60) # Set Fps
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
 
-
-
- 
+    screen.fill((175, 215, 70))
+    fruit.draw_fruit()
+    pygame.display.update()
+    clock.tick(60)
