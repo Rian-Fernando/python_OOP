@@ -96,7 +96,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-
+            
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 if main_game.snake.direction.y != 1:
@@ -118,3 +118,4 @@ while True:
     main_game.draw_elements()
     pygame.display.update()
     clock.tick(60)
+    
