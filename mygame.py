@@ -137,6 +137,10 @@ class MAIN:
             self.snake.add_block()
             self.snake.play_crunch_sound()
 
+        for block in self.snake.body[1:]:
+            if block == self.fruit.pos:
+                self.fruit.randomize()
+
     def check_fail(self):
         if not 0 <= self.snake.body[0].x < cell_number or not 0 <= self.snake.body[0].y < cell_number:
             self.game_over()
